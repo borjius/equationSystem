@@ -1,0 +1,5 @@
+<symbology>
+<symbol>add</symbol>
+<operator>+</operator>
+<description>It retrieves the sum of previous and next values</description>
+</symbology>
