@@ -5,10 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class EquationSystem 
-{
-    public static void main( String[] args )
+public class EquationSystem {
+	
+	public static void main( String[] args )
     {
         ApplicationContext ctx = SpringApplication.run(EquationSystem.class, args);
     }
+    
 }
