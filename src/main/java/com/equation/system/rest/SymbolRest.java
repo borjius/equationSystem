@@ -1,11 +1,14 @@
 package com.equation.system.rest;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -28,9 +31,15 @@ public class SymbolRest {
 	
 	@GET
 	@Path("{symbol}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Symbol getSymbol(@PathParam("symbol") String symbol) {
 		log.debug("Looking for symbol {}", symbol);
-		return new Symbol("symbol", "sss", "ffefe");
+		List<Symbol> symbols = symbolRep.findBySymbol(symbol);
+		if (symbols != null && !symbols.isEmpty()) {
+			return symbols.get(0);
+		}
+		log.info("Symbol {} was not found in system", symbol);
+		return null;
 	}
 	
 	@POST
